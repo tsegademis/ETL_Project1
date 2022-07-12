@@ -1,0 +1,3255 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="6/27/2022 4:41:51 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-VDCQB7C"
+  DTS:CreatorName="DESKTOP-VDCQB7C\TBE-life"
+  DTS:DTSID="{160FA079-1F2B-43BC-96FF-679D1A68E419}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="DimensionalModeling"
+  DTS:PackageType="5"
+  DTS:VersionBuild="15"
+  DTS:VersionGUID="{2401074E-5574-4428-8A48-7E7B4FC71622}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+      DTS:ObjectName="LocalHost.Project_SSISDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectRetryCount="1"
+          DTS:ConnectRetryInterval="5"
+          DTS:ConnectionString="Data Source=.;Initial Catalog=Project_SSISDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Dim_AddressBook"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{3F4D33B1-48FB-4BE7-B908-35ADAEAB912D}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim_AddressBook">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Dim_AddressBook\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{369EB3E1-8FAE-4CB3-BE61-5B7715A7016C}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_AddressBook]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Country]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Country"
+                          cachedSortKeyPosition="1"
+                          externalMetadataColumnId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[Country]" />
+                        <inputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[City]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="City"
+                          cachedSortKeyPosition="2"
+                          externalMetadataColumnId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[City]" />
+                        <inputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="State"
+                          cachedSortKeyPosition="3"
+                          externalMetadataColumnId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[State]" />
+                        <inputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PostalCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="PostalCode"
+                          cachedSortKeyPosition="4"
+                          externalMetadataColumnId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[PostalCode]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AddressID]"
+                          dataType="i4"
+                          name="AddressID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PostalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PostalCode" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Ods_Sample_Data_Set_Table]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Country]"
+                          name="Country"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]"
+                          name="City"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                          name="State"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                          length="20"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[PostalCode]"
+                          name="PostalCode"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RowID]"
+                          dataType="i4"
+                          name="RowID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="OrderID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          name="OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          name="ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ShipMode" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerName" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Segment" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PostalCode" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Category" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SubCategory]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SubCategory" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                          codePage="1252"
+                          dataType="text"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sales]"
+                          dataType="r8"
+                          name="Sales" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                          dataType="i4"
+                          name="Quantity" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                          dataType="r8"
+                          name="Discount" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Profit]"
+                          dataType="r8"
+                          name="Profit" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Person]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Person" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Returned]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Returned" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Country]"
+                          name="Country" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[City]"
+                          name="City" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                          name="State" />
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[PostalCode]"
+                          name="PostalCode" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Dim_AddressBook\Data Flow Task\Sort"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Dim_AddressBook\Data Flow Task\Sort.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\Sort.Inputs[Sort Input].Columns[Country]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Country"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Country]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\Sort.Inputs[Sort Input].Columns[City]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="City"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">2</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\Sort.Inputs[Sort Input].Columns[State]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="State"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">3</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\Sort.Inputs[Sort Input].Columns[PostalCode]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="20"
+                          cachedName="PostalCode"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[PostalCode]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">4</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[Country]"
+                          name="Country"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[Country]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[City]"
+                          name="City"
+                          sortKeyPosition="2">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[City]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[State]"
+                          name="State"
+                          sortKeyPosition="3">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[PostalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          lineageId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output].Columns[PostalCode]"
+                          name="PostalCode"
+                          sortKeyPosition="4">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[PostalCode]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Dim_AddressBook\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\Dim_AddressBook\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Dim_AddressBook\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Dim_AddressBook\Data Flow Task.Paths[Sort Output]"
+                  endId="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Sort Output"
+                  startId="Package\Dim_AddressBook\Data Flow Task\Sort.Outputs[Sort Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Dim_AddressBook\EST_Truncate_Dim_AddressBook"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{704E392F-8240-4CF2-9830-EB59A9C43734}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Truncate_Dim_AddressBook"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="5">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Truncate Table Dim_AddressBook&#xA;Go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Dim_AddressBook.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{BC56C36B-5F42-4E0B-AF31-52A8D1929FAF}"
+          DTS:From="Package\Dim_AddressBook\EST_Truncate_Dim_AddressBook"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Dim_AddressBook\Data Flow Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DIM_Customer"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{BB343EA5-4FF1-43A3-A077-B33D6A289B40}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DIM_Customer">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\DIM_Customer\EST_Truncate_Dim_Customer"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{87cad068-e3f8-4f6a-8c5e-8775688e3ed0}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Truncate_Dim_Customer"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Truncate Table [dbo].[Dim_Customer]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DIM_Customer\opt#1EST_Insert_Into_Dim_Company"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{a8612d6b-06c5-4846-8718-fa290cf47003}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="opt#1EST_Insert_Into_Dim_Company"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="2">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Insert into Dim_Customer&#xA;select distinct [CustomerID], [CustomerName] from [dbo].[Ods_Sample_Data_Set_Table]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{8c038829-8b89-4a28-a5b9-f66898c8d733}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Opt#2 DFT(Derived Column + Sort)"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination 1"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Customer]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[CustomerID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CustomerID"
+                          cachedSortKeyPosition="1"
+                          externalMetadataColumnId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Outputs[Sort Output].Columns[CustomerID]" />
+                        <inputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[CustomerName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CustomerName"
+                          cachedSortKeyPosition="2"
+                          externalMetadataColumnId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Outputs[Sort Output].Columns[CustomerName]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CustomerID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[CustomerName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerName" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort 1"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Inputs[Sort Input].Columns[CustomerID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CustomerID"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].Columns[CustomerID]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Inputs[Sort Input].Columns[CustomerName]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="CustomerName"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].Columns[CustomerName]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">2</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Outputs[Sort Output].Columns[CustomerID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Outputs[Sort Output].Columns[CustomerID]"
+                          name="CustomerID"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].Columns[CustomerID]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Outputs[Sort Output].Columns[CustomerName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Outputs[Sort Output].Columns[CustomerName]"
+                          name="CustomerName"
+                          sortKeyPosition="2">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].Columns[CustomerName]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="Source_ODS_Table"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Ods_Sample_Data_Set_Table]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          length="50"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].Columns[CustomerID]"
+                          name="CustomerID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].Columns[CustomerName]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                          length="50"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].Columns[CustomerName]"
+                          name="CustomerName"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[RowID]"
+                          dataType="i4"
+                          name="RowID" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="OrderID" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          name="OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          name="ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[ShipMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ShipMode" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerName" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Segment]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Segment" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PostalCode" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Category" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[SubCategory]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SubCategory" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                          codePage="1252"
+                          dataType="text"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Sales]"
+                          dataType="r8"
+                          name="Sales" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                          dataType="i4"
+                          name="Quantity" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                          dataType="r8"
+                          name="Discount" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Profit]"
+                          dataType="r8"
+                          name="Profit" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Person]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Person" />
+                        <externalMetadataColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output].ExternalColumns[Returned]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Returned" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output].Columns[CustomerID]"
+                          name="CustomerID" />
+                        <outputColumn
+                          refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Error Output].Columns[CustomerName]"
+                          name="CustomerName" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort).Paths[OLE DB Source Output]"
+                  endId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Inputs[Sort Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort).Paths[Sort Output]"
+                  endId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  name="Sort Output"
+                  startId="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1.Outputs[Sort Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DIM_Customer.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{5E013AC4-2E70-4786-A34B-525925BA524F}"
+          DTS:From="Package\DIM_Customer\EST_Truncate_Dim_Customer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\DIM_Customer\opt#1EST_Insert_Into_Dim_Company" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\DIM_Customer.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{D9BC8F08-E8B6-4453-BC8A-1A67FBB91BFA}"
+          DTS:From="Package\DIM_Customer\EST_Truncate_Dim_Customer"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Dim_Product"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{BD349F40-C40B-49CC-B4B2-75121CE6F68B}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim_Product">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Dim_Product\Data Flow Task"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{90980C59-FD2C-479C-A003-E2063B91568E}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="Data Flow Task"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Dim_Product\Data Flow Task\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Product]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          cachedSortKeyPosition="1"
+                          externalMetadataColumnId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          lineageId="Package\Dim_Product\Data Flow Task\Sort.Outputs[Sort Output].Columns[ProductID]" />
+                        <inputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ProductName]"
+                          cachedCodepage="1252"
+                          cachedDataType="text"
+                          cachedName="ProductName"
+                          externalMetadataColumnId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                          lineageId="Package\Dim_Product\Data Flow Task\Sort.Outputs[Sort Output].Columns[ProductName]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ProductName]"
+                          codePage="1252"
+                          dataType="text"
+                          name="ProductName" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Dim_Product\Data Flow Task\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Ods_Sample_Data_Set_Table]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          length="50"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductID]"
+                          name="ProductID"
+                          truncationRowDisposition="FailComponent" />
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductName]"
+                          codePage="1252"
+                          dataType="text"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductName]"
+                          name="ProductName"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RowID]"
+                          dataType="i4"
+                          name="RowID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="OrderID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          name="OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          name="ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ShipMode" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerName" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Segment" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PostalCode" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Category" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SubCategory]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SubCategory" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                          codePage="1252"
+                          dataType="text"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sales]"
+                          dataType="r8"
+                          name="Sales" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                          dataType="i4"
+                          name="Quantity" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                          dataType="r8"
+                          name="Discount" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Profit]"
+                          dataType="r8"
+                          name="Profit" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Person]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Person" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Returned]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Returned" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductID]"
+                          name="ProductID" />
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                          codePage="1252"
+                          dataType="text"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ProductName]"
+                          name="ProductName" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Dim_Product\Data Flow Task\Sort"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Dim_Product\Data Flow Task\Sort.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Dim_Product\Data Flow Task\Sort.Inputs[Sort Input].Columns[ProductID]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="ProductID"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductID]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                        <inputColumn
+                          refId="Package\Dim_Product\Data Flow Task\Sort.Inputs[Sort Input].Columns[ProductName]"
+                          cachedCodepage="1252"
+                          cachedDataType="text"
+                          cachedName="ProductName"
+                          lineageId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductName]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">0</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_Product\Data Flow Task\Sort.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\Sort.Outputs[Sort Output].Columns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_Product\Data Flow Task\Sort.Outputs[Sort Output].Columns[ProductID]"
+                          name="ProductID"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductID]}</property>
+                          </properties>
+                        </outputColumn>
+                        <outputColumn
+                          refId="Package\Dim_Product\Data Flow Task\Sort.Outputs[Sort Output].Columns[ProductName]"
+                          codePage="1252"
+                          dataType="text"
+                          lineageId="Package\Dim_Product\Data Flow Task\Sort.Outputs[Sort Output].Columns[ProductName]"
+                          name="ProductName">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output].Columns[ProductName]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Dim_Product\Data Flow Task.Paths[OLE DB Source Output]"
+                  endId="Package\Dim_Product\Data Flow Task\Sort.Inputs[Sort Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Dim_Product\Data Flow Task\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Dim_Product\Data Flow Task.Paths[Sort Output]"
+                  endId="Package\Dim_Product\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Sort Output"
+                  startId="Package\Dim_Product\Data Flow Task\Sort.Outputs[Sort Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Dim_Product\EST_Insert_Into_Dim_Product"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:Disabled="True"
+          DTS:DTSID="{CE5A7D22-51B7-422C-9A7A-EF106553C050}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Insert_Into_Dim_Product"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:SqlStatementSource="Insert into Dim_Product&#xA;select distinct [ProductID], [ProductName] from [dbo].[Ods_Sample_Data_Set_Table]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Dim_Product\EST_Trucate_Dim_Product"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{BD43DECA-5617-478F-9D47-F847A2120AAE}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Trucate_Dim_Product"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="3">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Truncate Table Dim_Product&#xA;Go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Dim_Product.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{96201C8E-397D-4E58-858E-53EC2989EDD6}"
+          DTS:From="Package\Dim_Product\EST_Trucate_Dim_Product"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Dim_Product\EST_Insert_Into_Dim_Product" />
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Dim_Product.PrecedenceConstraints[Constraint 1]"
+          DTS:CreationName=""
+          DTS:DTSID="{90238B65-79F3-4568-964B-41C3BE72A572}"
+          DTS:From="Package\Dim_Product\EST_Trucate_Dim_Product"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint 1"
+          DTS:To="Package\Dim_Product\Data Flow Task" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Dim_Region"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{609A73C0-7EB0-4936-9BAC-49A77D4F2AA9}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim_Region">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Dim_Region\EST_Insert_Into_Dim_Region"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C88A99F1-67ED-4C7D-A5B4-678056283026}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Insert_Into_Dim_Region"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Insert into Dim_Region&#xA;select distinct Region from [dbo].[Ods_Sample_Data_Set_Table]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Dim_Region\EST_Truncate_Dim_Region"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{F233E383-906C-4480-A4D2-42DD854E3F45}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Truncate_Dim_Region"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="0">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Truncate Table Dim_Region&#xA;Go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Dim_Region.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{C540E305-C512-4630-B77F-E7E2DE20E408}"
+          DTS:From="Package\Dim_Region\EST_Truncate_Dim_Region"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Dim_Region\EST_Insert_Into_Dim_Region" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Dim_Segment"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{143E6423-BFC9-4193-96E2-F7963459A9C3}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim_Segment">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Dim_Segment\DFT_Segment"
+          DTS:CreationName="Microsoft.Pipeline"
+          DTS:Description="Data Flow Task"
+          DTS:DTSID="{825C4AEF-747C-4480-B77C-3EB6DF395F5A}"
+          DTS:ExecutableType="Microsoft.Pipeline"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="DFT_Segment"
+          DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <pipeline
+              version="1">
+              <components>
+                <component
+                  refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination"
+                  componentClassID="Microsoft.OLEDBDestination"
+                  contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+                  description="OLE DB Destination"
+                  name="OLE DB Destination"
+                  usesDispositions="true"
+                  version="4">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Dim_Segment]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">3</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepIdentity">false</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                      name="FastLoadKeepNulls">false</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                      name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                      name="FastLoadMaxInsertCommitSize">2147483647</property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <inputs>
+                    <input
+                      refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                      errorOrTruncationOperation="Insert"
+                      errorRowDisposition="FailComponent"
+                      hasSideEffects="true"
+                      name="OLE DB Destination Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Segment]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Segment"
+                          cachedSortKeyPosition="1"
+                          externalMetadataColumnId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment]"
+                          lineageId="Package\Dim_Segment\DFT_Segment\Sort.Outputs[Sort Output].Columns[Segment]" />
+                      </inputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[SegmentID]"
+                          dataType="i4"
+                          name="SegmentID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Segment]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Segment" />
+                      </externalMetadataColumns>
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                      exclusionGroup="1"
+                      isErrorOut="true"
+                      name="OLE DB Destination Error Output"
+                      synchronousInputId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Dim_Segment\DFT_Segment\OLE DB Source"
+                  componentClassID="Microsoft.OLEDBSource"
+                  contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+                  description="OLE DB Source"
+                  name="OLE DB Source"
+                  usesDispositions="true"
+                  version="7">
+                  <properties>
+                    <property
+                      dataType="System.Int32"
+                      description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                      name="CommandTimeout">0</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the name of the database object used to open a rowset."
+                      name="OpenRowset">[dbo].[Ods_Sample_Data_Set_Table]</property>
+                    <property
+                      dataType="System.String"
+                      description="Specifies the variable that contains the name of the database object used to open a rowset."
+                      name="OpenRowsetVariable"></property>
+                    <property
+                      dataType="System.String"
+                      description="The SQL command to be executed."
+                      name="SqlCommand"
+                      UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                    <property
+                      dataType="System.String"
+                      description="The variable that contains the SQL command to be executed."
+                      name="SqlCommandVariable"></property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the column code page to use when code page information is unavailable from the data source."
+                      name="DefaultCodePage">1252</property>
+                    <property
+                      dataType="System.Boolean"
+                      description="Forces the use of the DefaultCodePage property value when describing character data."
+                      name="AlwaysUseDefaultCodePage">false</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the mode used to access the database."
+                      name="AccessMode"
+                      typeConverter="AccessMode">0</property>
+                    <property
+                      dataType="System.String"
+                      description="The mappings between the parameters in the SQL command and variables."
+                      name="ParameterMapping"></property>
+                  </properties>
+                  <connections>
+                    <connection
+                      refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Connections[OleDbConnection]"
+                      connectionManagerID="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      connectionManagerRefId="Package.ConnectionManagers[LocalHost.Project_SSISDB]"
+                      description="The OLE DB runtime connection used to access the database."
+                      name="OleDbConnection" />
+                  </connections>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output]"
+                      name="OLE DB Source Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment]"
+                          codePage="1252"
+                          dataType="str"
+                          errorOrTruncationOperation="Conversion"
+                          errorRowDisposition="FailComponent"
+                          externalMetadataColumnId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment]"
+                          length="50"
+                          lineageId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment]"
+                          name="Segment"
+                          truncationRowDisposition="FailComponent" />
+                      </outputColumns>
+                      <externalMetadataColumns
+                        isUsed="True">
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Segment]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Segment" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[RowID]"
+                          dataType="i4"
+                          name="RowID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="OrderID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OrderDate]"
+                          dataType="dbTimeStamp"
+                          name="OrderDate" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipDate]"
+                          dataType="dbTimeStamp"
+                          name="ShipDate" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ShipMode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ShipMode" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[CustomerName]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="CustomerName" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Country]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Country" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[City]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="City" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="State" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[PostalCode]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="PostalCode" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Region]"
+                          codePage="1252"
+                          dataType="str"
+                          length="20"
+                          name="Region" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductID]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="ProductID" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Category]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Category" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[SubCategory]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="SubCategory" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ProductName]"
+                          codePage="1252"
+                          dataType="text"
+                          name="ProductName" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sales]"
+                          dataType="r8"
+                          name="Sales" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Quantity]"
+                          dataType="i4"
+                          name="Quantity" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Discount]"
+                          dataType="r8"
+                          name="Discount" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Profit]"
+                          dataType="r8"
+                          name="Profit" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Person]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Person" />
+                        <externalMetadataColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Returned]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          name="Returned" />
+                      </externalMetadataColumns>
+                    </output>
+                    <output
+                      refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                      isErrorOut="true"
+                      name="OLE DB Source Error Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          dataType="i4"
+                          lineageId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                          name="ErrorCode"
+                          specialFlags="1" />
+                        <outputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          dataType="i4"
+                          lineageId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                          name="ErrorColumn"
+                          specialFlags="2" />
+                        <outputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Segment]"
+                          name="Segment" />
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+                <component
+                  refId="Package\Dim_Segment\DFT_Segment\Sort"
+                  componentClassID="Microsoft.Sort"
+                  contactInfo="Sort;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+                  description="Sorts input data in ascending or descending order when it cannot be sorted at its source. For example, sort sales data by 'customer id' before it is written to a flat file and delivered to another department. Note: We do not recommend this transformation for large data flows."
+                  name="Sort"
+                  version="1">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      description="Indicates whether the Sort transformation removes rows with duplicate sort values."
+                      name="EliminateDuplicates">true</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the maximum number of threads to use for sorting."
+                      expressionType="Notify"
+                      name="MaximumThreads">-1</property>
+                  </properties>
+                  <inputs>
+                    <input
+                      refId="Package\Dim_Segment\DFT_Segment\Sort.Inputs[Sort Input]"
+                      name="Sort Input">
+                      <inputColumns>
+                        <inputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\Sort.Inputs[Sort Input].Columns[Segment]"
+                          cachedCodepage="1252"
+                          cachedDataType="str"
+                          cachedLength="50"
+                          cachedName="Segment"
+                          lineageId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment]">
+                          <properties>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the comparison options for character data."
+                              name="NewComparisonFlags">0</property>
+                            <property
+                              dataType="System.Int32"
+                              description="Specifies the sort order of the column."
+                              name="NewSortKeyPosition">1</property>
+                          </properties>
+                        </inputColumn>
+                      </inputColumns>
+                      <externalMetadataColumns />
+                    </input>
+                  </inputs>
+                  <outputs>
+                    <output
+                      refId="Package\Dim_Segment\DFT_Segment\Sort.Outputs[Sort Output]"
+                      isSorted="true"
+                      name="Sort Output">
+                      <outputColumns>
+                        <outputColumn
+                          refId="Package\Dim_Segment\DFT_Segment\Sort.Outputs[Sort Output].Columns[Segment]"
+                          codePage="1252"
+                          dataType="str"
+                          length="50"
+                          lineageId="Package\Dim_Segment\DFT_Segment\Sort.Outputs[Sort Output].Columns[Segment]"
+                          name="Segment"
+                          sortKeyPosition="1">
+                          <properties>
+                            <property
+                              containsID="true"
+                              dataType="System.Int32"
+                              description="Specifies the lineage identifier of the input column that is associated with this output column."
+                              name="SortColumnId">#{Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output].Columns[Segment]}</property>
+                          </properties>
+                        </outputColumn>
+                      </outputColumns>
+                      <externalMetadataColumns />
+                    </output>
+                  </outputs>
+                </component>
+              </components>
+              <paths>
+                <path
+                  refId="Package\Dim_Segment\DFT_Segment.Paths[OLE DB Source Output]"
+                  endId="Package\Dim_Segment\DFT_Segment\Sort.Inputs[Sort Input]"
+                  name="OLE DB Source Output"
+                  startId="Package\Dim_Segment\DFT_Segment\OLE DB Source.Outputs[OLE DB Source Output]" />
+                <path
+                  refId="Package\Dim_Segment\DFT_Segment.Paths[Sort Output]"
+                  endId="Package\Dim_Segment\DFT_Segment\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  name="Sort Output"
+                  startId="Package\Dim_Segment\DFT_Segment\Sort.Outputs[Sort Output]" />
+              </paths>
+            </pipeline>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Dim_Segment\EST_Truncate_Dim_Segment"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{E31FFC51-80C9-430D-B8C5-7A2D96FB9397}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Truncate_Dim_Segment"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:SqlStatementSource="Truncate Table Dim_Segment" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Dim_Segment.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{6411BFAB-3B89-49EF-A8E7-FDD6E316D4FA}"
+          DTS:From="Package\Dim_Segment\EST_Truncate_Dim_Segment"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Dim_Segment\DFT_Segment" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Dim_ShipMode"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:Disabled="True"
+      DTS:DTSID="{733519FE-A6C3-428A-A1A9-57AC3D0A91F8}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Dim_ShipMode">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\Dim_ShipMode\EST_Insert_Into_Dim_ShipMode"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{84CC40C8-04B0-49E6-A8C6-D3A1E00BAEE7}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Insert_Into_Dim_ShipMode"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:SqlStatementSource="Insert into Dim_ShipMode&#xA;select distinct ShipMode from [dbo].[Ods_Sample_Data_Set_Table]&#xA;GO" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\Dim_ShipMode\EST_Truncate_Dim_ShipMode"
+          DTS:CreationName="Microsoft.ExecuteSQLTask"
+          DTS:Description="Execute SQL Task"
+          DTS:DTSID="{C39EDBF2-7CFD-4A4B-A689-6210B34DB592}"
+          DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="EST_Truncate_Dim_ShipMode"
+          DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+          DTS:ThreadHint="4">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <SQLTask:SqlTaskData
+              SQLTask:Connection="{A69BFF75-49E4-4D77-BA47-740AB8D60519}"
+              SQLTask:BypassPrepare="False"
+              SQLTask:SqlStatementSource="Truncate Table Dim_ShipMode&#xA;Go" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+      <DTS:PrecedenceConstraints>
+        <DTS:PrecedenceConstraint
+          DTS:refId="Package\Dim_ShipMode.PrecedenceConstraints[Constraint]"
+          DTS:CreationName=""
+          DTS:DTSID="{B81FA05D-FE01-4655-9112-85659E3644FE}"
+          DTS:From="Package\Dim_ShipMode\EST_Truncate_Dim_ShipMode"
+          DTS:LogicalAnd="True"
+          DTS:ObjectName="Constraint"
+          DTS:To="Package\Dim_ShipMode\EST_Insert_Into_Dim_ShipMode" />
+      </DTS:PrecedenceConstraints>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="145.6,49.6"
+          Id="Package\DIM_Customer\opt#1EST_Insert_Into_Dim_Company"
+          TopLeft="15.3428597338346,66.3882399164684" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\DIM_Customer\EST_Truncate_Dim_Customer"
+          TopLeft="33.2000028950828,1.38823900486781" />
+        <NodeLayout
+          Size="129.6,48.8"
+          Id="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)"
+          TopLeft="171.057148099919,45.7411808033717" />
+        <EdgeLayout
+          Id="Package\DIM_Customer.PrecedenceConstraints[Constraint]"
+          TopLeft="87.7380979811253,42.9882390048678">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,23.4000009116005"
+              Start="0,0"
+              End="0,15.9000009116005">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.9000009116005" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DIM_Customer.PrecedenceConstraints[Constraint 1]"
+          TopLeft="191.600002895083,22.1882390048678">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.2571452048365,23.5529417985039"
+              Start="0,0"
+              End="44.2571452048365,16.0529417985039">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="40.2571452048365,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="40.2571452048365,0"
+                    Point2="44.2571452048365,0"
+                    Point3="44.2571452048365,4" />
+                  <mssgle:LineSegment
+                    End="44.2571452048365,16.0529417985039" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="321.6,131.2"
+          Size="199.2,43.2"
+          Id="Package\DIM_Customer"
+          TopLeft="29.3285659181823,9.44116056584095" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\Dim_Segment\EST_Truncate_Dim_Segment"
+          TopLeft="32.0285739222352,16.2352964770835" />
+        <NodeLayout
+          Size="144.8,41.6"
+          Id="Package\Dim_Segment\DFT_Segment"
+          TopLeft="49.1714313570335,79.7058856025286" />
+        <EdgeLayout
+          Id="Package\Dim_Segment.PrecedenceConstraints[Constraint]"
+          TopLeft="32.0285739222352,37.0352964770835">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.1428574347983,63.470589125445"
+              Start="0,0"
+              End="9.64285743479834,63.470589125445">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-18.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-18.5,0"
+                    Point2="-22.5,0"
+                    Point3="-22.5,4" />
+                  <mssgle:LineSegment
+                    End="-22.5,59.470589125445" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22.5,59.470589125445"
+                    Point2="-22.5,63.470589125445"
+                    Point3="-18.5,63.470589125445" />
+                  <mssgle:LineSegment
+                    End="9.64285743479834,63.470589125445" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="212.8,150.4"
+          Size="212.8,43.2"
+          Id="Package\Dim_Segment"
+          TopLeft="250.714289983926,7.31176154209284" />
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Dim_Product\EST_Trucate_Dim_Product"
+          TopLeft="11.9285715380494,4.73529410692237" />
+        <NodeLayout
+          Size="129.6,41.6"
+          Id="Package\Dim_Product\EST_Insert_Into_Dim_Product"
+          TopLeft="17.4000012772424,87.7764738163734" />
+        <EdgeLayout
+          Id="Package\Dim_Product.PrecedenceConstraints[Constraint]"
+          TopLeft="84.4642864076459,46.3352941069224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,41.441179709451"
+              Start="0,0"
+              End="0,33.941179709451">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.941179709451" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Dim_Product\Data Flow Task"
+          TopLeft="155.657146652378,63.3058852378885" />
+        <EdgeLayout
+          Id="Package\Dim_Product.PrecedenceConstraints[Constraint 1]"
+          TopLeft="161.528571538049,25.5352941069224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="69.3285751143282,37.7705911309662"
+              Start="0,0"
+              End="69.3285751143282,30.2705911309662">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="65.3285751143282,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="65.3285751143282,0"
+                    Point2="69.3285751143282,0"
+                    Point3="69.3285751143282,4" />
+                  <mssgle:LineSegment
+                    End="69.3285751143282,30.2705911309662" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="344.8,140"
+          Size="162.4,43.2"
+          Id="Package\Dim_Product"
+          TopLeft="479.285722447901,11.1705851144031" />
+        <NodeLayout
+          Size="145.6,49.6"
+          Id="Package\Dim_Region\EST_Truncate_Dim_Region"
+          TopLeft="5.5,6.11764933246232" />
+        <NodeLayout
+          Size="156.8,52"
+          Id="Package\Dim_Region\EST_Insert_Into_Dim_Region"
+          TopLeft="21.1428591377882,96.3529447156254" />
+        <EdgeLayout
+          Id="Package\Dim_Region.PrecedenceConstraints[Constraint]"
+          TopLeft="78.3,55.7176493324623">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21.2428591377882,40.635295383163"
+              Start="0,0"
+              End="21.2428591377882,33.135295383163">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.3176476915815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.3176476915815"
+                    Point2="0,20.3176476915815"
+                    Point3="4,20.3176476915815" />
+                  <mssgle:LineSegment
+                    End="17.2428591377882,20.3176476915815" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17.2428591377882,20.3176476915815"
+                    Point2="21.2428591377882,20.3176476915815"
+                    Point3="21.2428591377882,24.3176476915815" />
+                  <mssgle:LineSegment
+                    End="21.2428591377882,33.135295383163" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="217.6,153.6"
+          Size="159.2,43.2"
+          Id="Package\Dim_Region"
+          TopLeft="660.000011239733,9.09999653591817" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Dim_AddressBook\EST_Truncate_Dim_AddressBook"
+          TopLeft="8.71428538585198,2.1878411189391E-06" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Dim_AddressBook\Data Flow Task"
+          TopLeft="42.5142875145892,66.047061847898" />
+        <EdgeLayout
+          Id="Package\Dim_AddressBook.PrecedenceConstraints[Constraint 1]"
+          TopLeft="89.914285385852,41.6000021878411">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.8000021287372,24.4470596600569"
+              Start="0,0"
+              End="27.8000021287372,16.9470596600569">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.22352983002844" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.22352983002844"
+                    Point2="0,12.2235298300284"
+                    Point3="4,12.2235298300284" />
+                  <mssgle:LineSegment
+                    End="23.8000021287372,12.2235298300284" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.8000021287372,12.2235298300284"
+                    Point2="27.8000021287372,12.2235298300284"
+                    Point3="27.8000021287372,16.2235298300284" />
+                  <mssgle:LineSegment
+                    End="27.8000021287372,16.9470596600569" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="232.8,112.8"
+          Size="232.8,43.2"
+          Id="Package\Dim_AddressBook"
+          TopLeft="12.1428573496488,74.94117752161" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Dim_ShipMode\EST_Truncate_Dim_ShipMode"
+          TopLeft="11.3428627992165,10.6352964770835" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Dim_ShipMode\EST_Insert_Into_Dim_ShipMode"
+          TopLeft="34.914291772064,82.5176504263829" />
+        <EdgeLayout
+          Id="Package\Dim_ShipMode.PrecedenceConstraints[Constraint]"
+          TopLeft="92.5428627992165,52.2352964770835">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.5714289728475,30.2823539492994"
+              Start="0,0"
+              End="23.5714289728475,22.7823539492994">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,11.1411769746497" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,11.1411769746497"
+                    Point2="0,15.1411769746497"
+                    Point3="4,15.1411769746497" />
+                  <mssgle:LineSegment
+                    End="19.5714289728475,15.1411769746497" />
+                  <mssgle:CubicBezierSegment
+                    Point1="19.5714289728475,15.1411769746497"
+                    Point2="23.5714289728475,15.1411769746497"
+                    Point3="23.5714289728475,19.1411769746497" />
+                  <mssgle:LineSegment
+                    End="23.5714289728475,22.7823539492994" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <ContainerLayout
+          HeaderHeight="43.2"
+          IsExpanded="False"
+          PanelSize="204,129.6"
+          Size="204,43.2"
+          Id="Package\Dim_ShipMode"
+          TopLeft="252.857147163274,77.8176445921399" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="179.2,41.6"
+          Id="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\OLE DB Destination 1"
+          TopLeft="331.428577072767,181.235296659404" />
+        <NodeLayout
+          Size="106.4,41.6"
+          Id="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Sort 1"
+          TopLeft="330.714291346317,94.8235307416289" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort)\Source_ODS_Table"
+          TopLeft="205.000003491129,28.2941180438731" />
+        <EdgeLayout
+          Id="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort).Paths[Sort Output]"
+          TopLeft="383.914291346317,136.423530741629">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="37.1142857264499,44.8117659177747"
+              Start="0,0"
+              End="37.1142857264499,37.3117659177747">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.4058829588874" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.4058829588874"
+                    Point2="0,22.4058829588874"
+                    Point3="4,22.4058829588874" />
+                  <mssgle:LineSegment
+                    End="33.1142857264499,22.4058829588874" />
+                  <mssgle:CubicBezierSegment
+                    Point1="33.1142857264499,22.4058829588874"
+                    Point2="37.1142857264499,22.4058829588874"
+                    Point3="37.1142857264499,26.4058829588874" />
+                  <mssgle:LineSegment
+                    End="37.1142857264499,37.3117659177747" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DIM_Customer\Opt#2 DFT(Derived Column + Sort).Paths[OLE DB Source Output]"
+          TopLeft="289.400003491129,69.8941180438731">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="94.5142878551874,24.9294126977558"
+              Start="0,0"
+              End="94.5142878551874,17.4294126977558">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.46470634887788" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.46470634887788"
+                    Point2="0,12.4647063488779"
+                    Point3="4,12.4647063488779" />
+                  <mssgle:LineSegment
+                    End="90.5142878551874,12.4647063488779" />
+                  <mssgle:CubicBezierSegment
+                    Point1="90.5142878551874,12.4647063488779"
+                    Point2="94.5142878551874,12.4647063488779"
+                    Point3="94.5142878551874,16.4647063488779" />
+                  <mssgle:LineSegment
+                    End="94.5142878551874,17.4294126977558" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <TaskHost
+    design-time-name="Package\Dim_Segment\DFT_Segment">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Dim_Segment\DFT_Segment\OLE DB Source"
+          TopLeft="160,7.99999999999999" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Dim_Segment\DFT_Segment\Sort"
+          TopLeft="179,89" />
+        <EdgeLayout
+          Id="Package\Dim_Segment\DFT_Segment.Paths[OLE DB Source Output]"
+          TopLeft="231.3,49.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,39.4"
+              Start="0,0"
+              End="0,31.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Dim_Segment\DFT_Segment\OLE DB Destination"
+          TopLeft="300,81" />
+        <EdgeLayout
+          Id="Package\Dim_Segment\DFT_Segment.Paths[Sort Output]"
+          TopLeft="276.6,105.8">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="23.3999999999999,0"
+              Start="0,0"
+              End="15.8999999999999,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="15.8999999999999,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim_Segment\DFT_Segment\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim_Segment\DFT_Segment\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Dim_Product\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Dim_Product\Data Flow Task\OLE DB Source"
+          TopLeft="191,14" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Dim_Product\Data Flow Task\Sort"
+          TopLeft="266,90" />
+        <EdgeLayout
+          Id="Package\Dim_Product\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="265.8,55.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.0000000000001,34.4"
+              Start="0,0"
+              End="49.0000000000001,26.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.2"
+                    Point2="0,17.2"
+                    Point3="4,17.2" />
+                  <mssgle:LineSegment
+                    End="45.0000000000001,17.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.0000000000001,17.2"
+                    Point2="49.0000000000001,17.2"
+                    Point3="49.0000000000001,21.2" />
+                  <mssgle:LineSegment
+                    End="49.0000000000001,26.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Dim_Product\Data Flow Task\OLE DB Destination"
+          TopLeft="304,156" />
+        <EdgeLayout
+          Id="Package\Dim_Product\Data Flow Task.Paths[Sort Output]"
+          TopLeft="314.8,131.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.4,24.4"
+              Start="0,0"
+              End="74.4,16.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.19999999999999" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.19999999999999"
+                    Point2="0,12.2"
+                    Point3="4,12.2" />
+                  <mssgle:LineSegment
+                    End="70.4,12.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.4,12.2"
+                    Point2="74.4,12.2"
+                    Point3="74.4,16.2" />
+                  <mssgle:LineSegment
+                    End="74.4,16.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim_Product\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim_Product\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Dim_AddressBook\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\Dim_AddressBook\Data Flow Task\OLE DB Source"
+          TopLeft="171,34" />
+        <NodeLayout
+          Size="97.6,41.6"
+          Id="Package\Dim_AddressBook\Data Flow Task\Sort"
+          TopLeft="240,114" />
+        <EdgeLayout
+          Id="Package\Dim_AddressBook\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="245.8,75.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="43,38.4"
+              Start="0,0"
+              End="43,30.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.2"
+                    Point2="0,19.2"
+                    Point3="4,19.2" />
+                  <mssgle:LineSegment
+                    End="39,19.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="39,19.2"
+                    Point2="43,19.2"
+                    Point3="43,23.2" />
+                  <mssgle:LineSegment
+                    End="43,30.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination"
+          TopLeft="329,190" />
+        <EdgeLayout
+          Id="Package\Dim_AddressBook\Data Flow Task.Paths[Sort Output]"
+          TopLeft="288.8,155.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="125.4,34.4"
+              Start="0,0"
+              End="125.4,26.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.2"
+                    Point2="0,17.2"
+                    Point3="4,17.2" />
+                  <mssgle:LineSegment
+                    End="121.4,17.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="121.4,17.2"
+                    Point2="125.4,17.2"
+                    Point3="125.4,21.2" />
+                  <mssgle:LineSegment
+                    End="125.4,26.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim_AddressBook\Data Flow Task\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Dim_AddressBook\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
